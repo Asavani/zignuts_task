@@ -1,0 +1,27 @@
+﻿@page
+<div id="result">
+
+</div>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script>
+    $( document ).ready(function() {
+        $.ajax({
+            type: 'GET',
+            url: 'https://localhost:44310/handler?=employee_name',
+            contentType: 'json',
+            success: function (data) {
+                var result = JSON.parse(data);
+
+                for (var i = 0; i < result.length; i++)
+                {
+                    $("#result").append("<br>"+result[i]);
+                }
+            },
+            error: function () {
+                alert("Page Not Found");
+            }
+
+        });
+});
+
+</script>
